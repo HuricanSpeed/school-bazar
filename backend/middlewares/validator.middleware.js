@@ -51,7 +51,7 @@ const register = [...registerValidation, (req, res, next) => {
 }]
 
 
-const addpost = [...registerValidation, (req, res, next) => {
+const addpost = [...postValidation, (req, res, next) => {
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -68,5 +68,6 @@ const addpost = [...registerValidation, (req, res, next) => {
 
 module.exports = {
     login,
-    register
+    register,
+    addpost
 }
