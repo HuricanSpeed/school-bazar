@@ -1,0 +1,11 @@
+.hero-bg {
+	background-image: url("/assets/images/str.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: right;
+}
+
+.btn-main {
+	@apply px-8 py-2 text-white font-semibold;
+	background-color: #dd401a;
+}

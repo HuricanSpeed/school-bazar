@@ -1,1 +1,55 @@
-<div class="w-full h-52 bg-red-500"></div>
+<div class="hero-bg h-52 flex">
+	<div class="p-8 gap-6 grid my-auto">
+		<p class="text-4xl text-white font-semibold">ŠKOLNÍ BAZAR</p>
+		<div class="flex gap-8">
+			<div *ngFor="let i of [0, 1]" class="btn-main">RESSLOVA</div>
+		</div>
+	</div>
+</div>
+<div class="flex gap-0.5">
+	<div class="min-w-[300px]">
+		<div class="pl-12 pr-8 py-2">
+			<span class="text-lg font-bold">FILTROVÁNÍ</span>
+		</div>
+		<div class="">
+			<div *ngFor="let i of [0, 1, 2, 3]" class="flex border-t-2 border-gray-200 bg-white py-4 pl-4 pr-6 gap-4">
+				<div class="cursor-pointer">
+					<fa-icon [icon]="faChevronDown"></fa-icon>
+				</div>
+				<div class="grid gap-2 w-full">
+					<div class="flex cursor-pointer">
+						<span class="font-bold">ROČNÍKY</span>
+					</div>
+					<div>
+						<div *ngFor="let i of [0, 1, 2, 3]" class="flex cursor-pointer">
+							<span>1.</span>
+							<div class="ml-auto">CHECKBOX</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="w-full grid gap-0.5">
+		<div class="grid grid-cols-4 gap-0.5">
+			<div *ngFor="let i of [0, 1, 2]" class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100">
+				<span class="font-semibold text-lg">NEJLEVNĚJŠÍ</span>
+			</div>
+			<div class="py-2 w-full flex cursor-pointer bg-primary">
+				<span class="font-semibold text-lg m-auto text-white">PŘIDAT KNÍŽKU</span>
+			</div>
+		</div>
+		<div class="grid grid-cols-4 gap-0.5">
+			<div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="bg-white p-8 grid gap-4">
+				<img src="/assets/images/knizka.jpg" alt="" />
+				<div class="grid gap-2">
+					<p class="font-semibold">Matika 4. vydání</p>
+					<div class="flex">
+						<span class="font-semibold text-lg">120,- kč</span>
+						<span class="text-sm ml-auto text-gray-700 mt-auto">12.04.2023</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
