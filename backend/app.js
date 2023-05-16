@@ -1,14 +1,22 @@
+const process = require("process");
 const express = require('express');
+require("dotenv").config()
 const cors = require('cors')
+const fs = require('fs')
+const morgan = require('morgan')
 
 const app = express();
 const session = require("express-session")
 
+
 const database = require("./models/index.module")
+const errorHandler = require("./middlewares/error.middleware")
 
 const loginRouter = require("./routes/login.route")
 const postRoute = require("./routes/post.route")
 const adminRoute = require("./routes/admin.route")
+
+let morganLogStream = fs.createWriteStream('./morgan.log', { flags: 'a' })
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -34,6 +42,10 @@ database.sync();
 app.use("/", loginRouter)
 app.use("/post/", postRoute)
 app.use("/admin/", adminRoute)
+
+app.use(errorHandler)
+
+app.use(morgan("combined", { stream: morganLogStream }))
 
 const port = 4000
 
