@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize')
 const sequelize = new Sequelize('schoolbazaar', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
-    loggin: true
+    logging: false
 })
 
 sequelize.authenticate().then(() => {
