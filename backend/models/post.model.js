@@ -16,6 +16,10 @@ const Post = sequelize.define("posts", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     price: {
         type: DataTypes.INTEGER,
         allowNull: false

@@ -13,12 +13,24 @@ const registerValidation = [
 ]
 
 const postValidation = [
-    body('name').exists().trim().isString().isLength({ min: 2, max: 128 }).withMessage('must be at least 4 chars long'),
+    body('name').exists().trim().isString().isLength({ min: 2, max: 128 }).withMessage('must be at least 2 chars long'),
     body('price').exists().trim(),
     body('user').exists().trim(),
     body('description').exists().trim(),
     body('state').exists().trim(),
     body('grade').exists().trim()
+]
+
+const getPostValidation = [
+    body('id').exists().trim().isInt()
+]
+
+const accountApproveValidation = [
+    body('username').exists().trim().isString().isLength({min: 2, max: 128}).withMessage('must be at least 2 chars long')
+]
+
+const removePostValidation = [
+    body('id').exists().trim().isInt()
 ]
 
 const login = [...loginValidation, (req, res, next) => {
@@ -66,8 +78,48 @@ const addpost = [...postValidation, (req, res, next) => {
     }
 }]
 
+const removePost = [...removePostValidation, (req, res, next) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        res.status(400).json({ success: false, message: "Bad Request", errors: errors.array() })
+    }
+    else {
+
+        next()
+    }
+}]
+
+const getpost = [...getPostValidation, (req, res, next) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        res.status(400).json({ success: false, message: "Bad Request", errors: errors.array() })
+    }
+    else {
+
+        next()
+    }
+}]
+
+const accountApprove = [...accountApproveValidation, (req, res, next) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        res.status(400).json({ success: false, message: "Bad Request", errors: errors.array() })
+    }
+    else {
+        req.body.username = String(req.body.username)
+
+        next()
+    }
+}]
+
 module.exports = {
     login,
     register,
-    addpost
+    addpost,
+    getpost,
+    accountApprove,
+    removePost
 }
