@@ -7,6 +7,7 @@ const session = require("express-session")
 const database = require("./models/index.module")
 
 const loginRouter = require("./routes/login.route")
+const postController = require("./routes/post.route")
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -23,13 +24,14 @@ app.use(session({ // session --> Production add SessionStore
       path: "/",
       maxAge: 3600000
     }
-  }))
+}))
 
 app.set("trust proxy", 1)
 
 database.sync();
 
 app.use("/", loginRouter)
+app.use("/post/", postController)
 
 const port = 4000
 
