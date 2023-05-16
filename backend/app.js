@@ -7,7 +7,8 @@ const session = require("express-session")
 const database = require("./models/index.module")
 
 const loginRouter = require("./routes/login.route")
-const postController = require("./routes/post.route")
+const postRoute = require("./routes/post.route")
+const adminRoute = require("./routes/admin.route")
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -31,7 +32,8 @@ app.set("trust proxy", 1)
 database.sync();
 
 app.use("/", loginRouter)
-app.use("/post/", postController)
+app.use("/post/", postRoute)
+app.use("/admin/", adminRoute)
 
 const port = 4000
 
