@@ -18,7 +18,7 @@ const addPost = (req, res, next) => {
 const getPosts = (req, res, next) => {
     try {
         Post.findAll().then(result => {
-            if(result){
+            if(result.length > 0){
                 res.status(200).json({success: true, message: "Getted all posts", posts: result})
             } else {
                 res.status(404).json({success: false, message: "No posts found"})
