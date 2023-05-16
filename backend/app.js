@@ -1,4 +1,6 @@
+const process = require("process");
 const express = require('express');
+require("dotenv").config()
 const cors = require('cors')
 const fs = require('fs')
 const morgan = require('morgan')
