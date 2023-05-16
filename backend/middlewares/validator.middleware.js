@@ -29,6 +29,10 @@ const accountApproveValidation = [
     body('username').exists().trim().isString().isLength({min: 2, max: 128}).withMessage('must be at least 2 chars long')
 ]
 
+const removePostValidation = [
+    body('id').exists().trim().isInt()
+]
+
 const login = [...loginValidation, (req, res, next) => {
     const errors = validationResult(req)
 
@@ -74,6 +78,18 @@ const addpost = [...postValidation, (req, res, next) => {
     }
 }]
 
+const removePost = [...removePostValidation, (req, res, next) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        res.status(400).json({ success: false, message: "Bad Request", errors: errors.array() })
+    }
+    else {
+
+        next()
+    }
+}]
+
 const getpost = [...getPostValidation, (req, res, next) => {
     const errors = validationResult(req)
 
@@ -104,5 +120,6 @@ module.exports = {
     register,
     addpost,
     getpost,
-    accountApprove
+    accountApprove,
+    removePost
 }
