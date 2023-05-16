@@ -51,7 +51,17 @@ const register = (req, res, next) => {
     }
 }
 
+const logout = (req, res, next) => {
+    try {
+        req.session.destroy()
+        res.status(200).json({ success: true, message: "Logged out successfully" })
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     login,
-    register
+    register,
+    logout
 }
