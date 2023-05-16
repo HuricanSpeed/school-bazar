@@ -7,6 +7,7 @@ const loginController = require('../controllers/login.controller')
 
 router.post('/login', validatorMiddleware.login, loginController.login)
 router.post('/register', validatorMiddleware.register, loginController.register)
+router.post('/logout', loginController.logout)
 
 
 module.exports = router
