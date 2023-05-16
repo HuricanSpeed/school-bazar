@@ -16,7 +16,6 @@ const hashPass = (password, hash) => {
     return passwordHashStr
 }
 
-
 module.exports = {
     comparePass,
     hashPass
