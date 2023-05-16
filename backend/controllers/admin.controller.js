@@ -15,6 +15,20 @@ const approve = (req, res, next) => {
     }
 }
 
+const removePost = (req, res, next) => {
+    try {
+        User.destroy({
+            where: {
+                id: req.body.id
+            }
+        })
+        res.status(200).json({success: true, message: "Post removed successfully"})
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
-    approve
+    approve,
+    removePost
 }
