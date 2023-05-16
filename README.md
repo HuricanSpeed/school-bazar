@@ -37,6 +37,13 @@ or for backend
 npm run start
 ```
 
+Example of .ENV File
+```bash
+DB_HOST='localhost'
+DB_USERNAME='root'
+DB_PASS=''
+DB_NAME='schoolbazar'
+```
 
 ## Built With
 
