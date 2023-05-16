@@ -1,7 +1,7 @@
 
 # School Bazaar
 
-School bazaar for SPSUL.cz. Practions by douda
+School bazaar for SPSUL.cz. Practions from douda
 
 ## Run Locally
 
