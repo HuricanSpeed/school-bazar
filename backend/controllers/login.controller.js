@@ -14,7 +14,7 @@ const login = (req, res, next) => {
                         let accountDetails = result.dataValues
                         delete accountDetails.password
 
-                        req.session.loggedin = true
+                        req.session.logged = true
                         req.session.accountDetails = accountDetails
                         
                         res.status(200).json({success: true, message: "Logged in successfully"})

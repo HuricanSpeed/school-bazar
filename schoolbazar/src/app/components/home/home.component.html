@@ -61,9 +61,11 @@
 			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100" (click)="changeFilterGlobal(2)" [class.active]="mostexpensive">
 				<span class="font-semibold text-lg">{{ 'Nejdražší' | uppercase }}</span>
 			</div>
-			<div class="py-2 w-full flex cursor-pointer bg-primary">
-				<span class="font-semibold text-lg m-auto text-white">PŘIDAT KNÍŽKU</span>
-			</div>
+			<ng-container *ngIf="userData">
+				<div class="py-2 w-full flex cursor-pointer bg-primary" *ngIf="userData.logged">
+					<span class="font-semibold text-lg m-auto text-white">PŘIDAT KNÍŽKU</span>
+				</div>
+			</ng-container>
 		</div>
 		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5" [class.grid-container]="noposts">
 			<ng-container *ngFor="let item of filteredData">

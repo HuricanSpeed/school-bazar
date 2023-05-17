@@ -6,4 +6,5 @@
     <input type="password" id="password" name="password" [(ngModel)]="formData.password" required>
   
     <button type="submit">Sumbit</button>
-</form>  
+</form>
+<ng-container *ngIf="errorMessage">{{ errorMessage }}</ng-container>

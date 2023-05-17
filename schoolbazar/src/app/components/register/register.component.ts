@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -17,9 +18,13 @@ export class RegisterComponent {
     password: ''
   };
 
+  errorMessage: string = ""
+
   submitForm(){
-    this.http.register(this.formData).subscribe(data => {
-      console.log(data)
+    this.http.register(this.formData).subscribe((response) => {
+      
+    }, (error) => {
+      this.errorMessage = error.error.message
     })
   }
 }

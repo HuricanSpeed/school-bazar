@@ -1,13 +1,28 @@
 <div class="flex w-full bg-white py-4 px-8">
-	<div class="my-auto">
-		<img src="./assets/images/logo.png" alt="" />
+	<div class="my-auto cursor-pointer">
+		<img src="./assets/images/logo.png" [routerLink]="['/']" />
 	</div>
-	<div class="ml-auto hidden gap-8 sm:flex">
-		<div class="my-auto cursor-pointer" [routerLink]="['/register']">
+	<div class="ml-auto hidden gap-8 sm:flex" *ngIf="!userData; else loggedIn">
+		<div class="my-auto cursor-pointer" [routerLink]="['/login']">
 			<span class="font-semibold">{{ 'Přihlásit se' | uppercase }}</span>
 		</div>
 		<div class="my-auto cursor-pointer" [routerLink]="['/register']">
 			<span class="font-semibold">{{ 'Registrovat se' | uppercase }}</span>
 		</div>
 	</div>
+	<ng-template #loggedIn>
+		<ng-container *ngIf="userData">
+			<ng-container *ngIf="userData.logged">
+				<div class="ml-auto hidden gap-8 sm:flex">
+					<div class="my-auto cursor-pointer" (click)="logout()">
+						<span class="font-semibold">{{userData.accountDetails.username | uppercase}}
+							<span class="cursor-pointer">
+								<fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+							</span>
+						</span>
+					</div>
+				</div>
+			</ng-container>
+		</ng-container>
+	</ng-template>
 </div>

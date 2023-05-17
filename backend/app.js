@@ -15,6 +15,7 @@ const errorHandler = require("./middlewares/error.middleware")
 const loginRouter = require("./routes/login.route")
 const postRoute = require("./routes/post.route")
 const adminRoute = require("./routes/admin.route")
+const sessionRouter = require("./routes/session.route")
 
 let morganLogStream = fs.createWriteStream('./morgan.log', { flags: 'a' })
 
@@ -22,13 +23,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors({ credentials: true, origin: "http://localhost:4200" }))
 
-app.set("trust proxy", 1)
-
 app.use(session({ // session --> Production add SessionStore
     name: 'schoolbazaar',
     secret: '5ch00lb4z44rby+d3jw&hur1c4n2023',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       secure: false, // Set to true when having HTTPS
       httpOnly: true,
@@ -42,6 +41,7 @@ database.sync();
 app.use("/", loginRouter)
 app.use("/post/", postRoute)
 app.use("/admin/", adminRoute)
+app.use("/", sessionRouter)
 
 app.use(errorHandler)
 

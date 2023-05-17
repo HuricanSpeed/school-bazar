@@ -18,12 +18,23 @@ export class HomeComponent implements OnInit {
 	showStav: boolean = true;
 	showGrade: boolean = true;
 	checkboxFilters: any = { grade: [], state: [] };
+	userData: any;
 
 
 	constructor(private http: HttpService) {}
 
 	ngOnInit(): void {
 		this.loadPosts();
+		if(!this.userData){
+			this.checkUser();
+		}
+	}
+
+	checkUser() {
+		this.http.getUser().subscribe((response) => {
+		  this.userData = response
+		  this.userData = this.userData.data
+		}, (error) => {})
 	}
 
 	reverse(what: number) {
