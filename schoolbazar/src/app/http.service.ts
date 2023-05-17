@@ -14,7 +14,7 @@ export class HttpService {
   //   return this.http.post('http://localhost:3000/getuser', {}, options);
   // }
 
-  getPosts(filter: number){
+  getPosts(grade: any){
     return this.http.get(`http://localhost:4000/post/getposts`)
   }
 }

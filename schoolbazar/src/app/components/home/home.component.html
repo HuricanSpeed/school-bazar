@@ -13,33 +13,37 @@
 		</div>
 		<div class="">
 			<div class="flex border-t-2 border-gray-200 bg-white py-4 pl-4 pr-6 gap-4">
-				<div class="cursor-pointer">
-					<fa-icon [icon]="faChevronDown"></fa-icon>
+				<div class="cursor-pointer" (click)="reverse(1)" [class.rotate-180]="!showGrade">
+					<fa-icon [icon]="faChevronUp"></fa-icon>
 				</div>
 				<div class="grid gap-2 w-full">
-					<div class="flex cursor-pointer">
+					<div class="flex cursor-pointer" (click)="reverse(1)">
 						<span class="font-bold">ROČNÍKY</span>
 					</div>
-					<div>
+					<div [class.hidden]="!showGrade">
 						<div *ngFor="let i of [0, 1, 2, 3]" class="flex cursor-pointer">
-							<span>{{ i+1 }}.</span>
-							<div class="ml-auto">CHECKBOX</div>
+							<span>{{ i+1 }}. {{ 'ročník' | uppercase }}</span>
+							<div class="ml-auto">
+								<input id="checkbox-{{i}}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" (change)="checkboxChanged(i+1, 'grade')">
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="flex border-t-2 border-gray-200 bg-white py-4 pl-4 pr-6 gap-4">
-				<div class="cursor-pointer">
-					<fa-icon [icon]="faChevronDown"></fa-icon>
+				<div class="cursor-pointer" (click)="reverse(0)" [class.rotate-180]="!showStav">
+					<fa-icon [icon]="faChevronUp"></fa-icon>
 				</div>
 				<div class="grid gap-2 w-full">
-					<div class="flex cursor-pointer">
+					<div class="flex cursor-pointer" (click)="reverse(0)">
 						<span class="font-bold">STAV</span>
 					</div>
-					<div>
-						<div *ngFor="let i of ['Poškozené', 'Zachovalé', 'Nové']" class="flex cursor-pointer">
+					<div [class.hidden]="!showStav">
+						<div *ngFor="let i of ['Poškozené', 'Zachovalé', 'Nové']; let index = index" class="flex cursor-pointer">
 							<span>{{ i | uppercase}}</span>
-							<div class="ml-auto">CHECKBOX</div>
+							<div class="ml-auto">
+								<input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" (change)="checkboxChanged(index+1, 'state')">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -47,7 +51,7 @@
 		</div>
 	</div>
 	<div class="w-full grid gap-0.5">
-		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5">
+		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5 h-fit">
 			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100" (click)="changeFilterGlobal(0)" [class.active]="relative">
 				<span class="font-semibold text-lg">{{ 'Relativní' | uppercase }}</span>
 			</div>
@@ -62,14 +66,14 @@
 			</div>
 		</div>
 		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5" [class.grid-container]="noposts">
-			<ng-container *ngFor="let item of posts.posts">
+			<ng-container *ngFor="let item of filteredData">
 				<div class="bg-white p-8 grid gap-4">
 					<img src="/assets/images/knizka.jpg" alt="" />
 					<div class="grid gap-2">
 						<p class="font-semibold">{{item.name}}</p>
 						<div class="flex">
 							<span class="font-semibold text-lg">{{item.price}},- kč</span>
-							<span class="text-sm ml-auto text-gray-700 mt-auto">12.04.2023</span>
+							<span class="text-sm ml-auto text-gray-700 mt-auto">{{ item.createdAt | date:'dd.MM.yyyy' }}</span>
 						</div>
 					</div>
 				</div>
