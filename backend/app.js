@@ -22,6 +22,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors({ credentials: true, origin: "http://localhost:4200" }))
 
+app.set("trust proxy", 1)
+
 app.use(session({ // session --> Production add SessionStore
     name: 'schoolbazaar',
     secret: '5ch00lb4z44rby+d3jw&hur1c4n2023',
@@ -34,8 +36,6 @@ app.use(session({ // session --> Production add SessionStore
       maxAge: 3600000
     }
 }))
-
-app.set("trust proxy", 1)
 
 database.sync();
 
