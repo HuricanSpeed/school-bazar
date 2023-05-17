@@ -9,3 +9,16 @@
 	@apply px-8 py-2 text-white font-semibold;
 	background-color: #dd401a;
 }
+
+.active {
+	background-color: rgb(214, 214, 214);
+}
+
+.gridcontainer {
+	grid-template-rows: 100px 300px;
+}
+
+.noposts{
+	width: 50vh;
+	text-align: center;
+}
