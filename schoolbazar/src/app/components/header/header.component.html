@@ -3,8 +3,11 @@
 		<img src="./assets/images/logo.png" alt="" />
 	</div>
 	<div class="ml-auto hidden gap-8 sm:flex">
-		<div *ngFor="let i of [0, 1, 2]" class="my-auto">
-			<span class="font-semibold">VŠECHNY</span>
+		<div class="my-auto cursor-pointer" [routerLink]="['/register']">
+			<span class="font-semibold">{{ 'Přihlásit se' | uppercase }}</span>
+		</div>
+		<div class="my-auto cursor-pointer" [routerLink]="['/register']">
+			<span class="font-semibold">{{ 'Registrovat se' | uppercase }}</span>
 		</div>
 	</div>
 </div>
