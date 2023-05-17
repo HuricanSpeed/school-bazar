@@ -17,4 +17,8 @@ export class HttpService {
   getPosts(grade: any){
     return this.http.get(`http://localhost:4000/post/getposts`)
   }
+
+  register(formData: any){
+    return this.http.post(`http://localhost:4000/register`, {username: formData.username, email: formData.email, telnumber: formData.telnumber, password: formData.password})
+  }
 }
