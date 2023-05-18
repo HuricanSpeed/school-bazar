@@ -3,11 +3,14 @@ const Post = require("../models/post.model")
 const addPost = (req, res, next) => {
     try {
         Post.create({
-            username: req.body.username,
-            name: req.body.itemname,
+            username: 'req.session.accountDetails.username',
+            name: req.body.name,
             price: req.body.price,
+            description: req.body.description,
             state: req.body.state,
-            grade: req.body.grade
+            grade: req.body.grade,
+            place: req.body.place,
+            image: req.body.image
         })
         res.status(200).json({success: true, message: "Post added successfully"});
     } catch (error) {
@@ -17,7 +20,11 @@ const addPost = (req, res, next) => {
 
 const getPosts = (req, res, next) => {
     try {
-        Post.findAll().then(result => {
+        Post.findAll({
+            where:{
+                active: 1
+            }
+        }).then(result => {
             if(result.length > 0){
                 res.status(200).json({success: true, message: "Getted all posts", posts: result})
             } else {

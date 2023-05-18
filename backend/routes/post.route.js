@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const postController = require('../controllers/post.controller')
+const loginMiddleware = require('../middlewares/login.middleware')
 const validatorMiddleware = require("../middlewares/validator.middleware")
 
 router.post("/addpost", validatorMiddleware.addpost, postController.addPost)

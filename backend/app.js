@@ -16,6 +16,7 @@ const loginRouter = require("./routes/login.route")
 const postRoute = require("./routes/post.route")
 const adminRoute = require("./routes/admin.route")
 const sessionRouter = require("./routes/session.route")
+const cdnRoute = require("./routes/cdn.route")
 
 let morganLogStream = fs.createWriteStream('./morgan.log', { flags: 'a' })
 
@@ -42,6 +43,7 @@ app.use("/", loginRouter)
 app.use("/post/", postRoute)
 app.use("/admin/", adminRoute)
 app.use("/", sessionRouter)
+app.use("/cdn/", cdnRoute)
 
 app.use(errorHandler)
 

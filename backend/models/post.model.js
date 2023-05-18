@@ -31,6 +31,19 @@ const Post = sequelize.define("posts", {
     grade: {
         type: DataTypes.TINYINT,
         allowNull: false
+    },
+    place: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: "0"
     }
 })
 
