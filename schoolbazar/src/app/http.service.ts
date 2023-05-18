@@ -43,4 +43,44 @@ export class HttpService {
     const options = { withCredentials: true };
     return this.http.post('http://localhost:4000/cdn/upload', formsData, options)
   }
+
+  getPost(id: number) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const options = { withCredentials: true, headers };
+    return this.http.post(`http://localhost:4000/post/getpost`, {id: id}, options)
+  }
+
+  getApprovalUsers() {
+    const options = { withCredentials: true };
+    return this.http.get(`http://localhost:4000/admin/getapprovals`, options)
+  }
+
+  approveUser(id: number){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const options = { withCredentials: true, headers };
+    return this.http.post(`http://localhost:4000/admin/approve`, {id: id}, options)
+  }
+
+  deleteUser(id: number){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const options = { withCredentials: true, headers };
+    return this.http.post(`http://localhost:4000/admin/delete`, {id: id}, options)
+  }
+
+  getApprovalsPost(){
+    const options = { withCredentials: true };
+    return this.http.get(`http://localhost:4000/admin/getpostapprovals`, options)
+  }
+
+  approvePost(id: number){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const options = { withCredentials: true, headers };
+    return this.http.post(`http://localhost:4000/admin/approvepost`, {id: id}, options)
+  }
+
+  removePost(id: number){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const options = { withCredentials: true, headers };
+    return this.http.post(`http://localhost:4000/admin/removepost`, {id: id}, options)
+  }
 }

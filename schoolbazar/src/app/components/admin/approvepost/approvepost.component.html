@@ -1,0 +1,43 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>State</th>
+        <th>Grade</th>
+        <th>Place</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="approvals">
+      <tr *ngFor="let item of approvals.approvals">
+        <td>{{ item.id }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.price }}</td>
+        <ng-container [ngSwitch]="item.state">
+            <td *ngSwitchCase="1">Poškozené</td>
+            <td *ngSwitchCase="2">Zachovalé</td>
+            <td *ngSwitchCase="3">Nové</td>
+            <td *ngSwitchDefault>Default</td>
+        </ng-container>
+        <td>{{item.grade}}. Ročník</td>
+        <ng-container *ngIf="item.place == 1;else stribrniky">
+            <td>Resslova</td>
+        </ng-container>
+        <ng-template #stribrniky>
+            <td>Stříbrníky</td>
+        </ng-template>
+        <td>
+          <a routerLink="/post/{{item.id}}" target="_blank">Preview</a> | 
+          <a (click)="approvePost(item.id)">Approve</a> | 
+          <a (click)="removePost(item.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

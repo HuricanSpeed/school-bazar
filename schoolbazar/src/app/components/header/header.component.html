@@ -14,6 +14,18 @@
 		<ng-container *ngIf="userData">
 			<ng-container *ngIf="userData.logged">
 				<div class="ml-auto hidden gap-8 sm:flex">
+					<ng-container *ngIf="userData.accountDetails.group == 'admin'">
+						<div class="my-auto cursor-pointer" [routerLink]="['/admin/user']">
+							<span class="font-semibold">{{ 'APPROVE USERS' | uppercase }}</span>
+						</div>
+						<div class="my-auto cursor-pointer" [routerLink]="['/admin/post']">
+							<span class="font-semibold">{{ 'APPROVE POSTS' | uppercase }}</span>
+						</div>
+						
+						<div class="my-auto cursor-pointer" [routerLink]="['/admin/users']">
+							<span class="font-semibold">{{ '|' | uppercase }}</span>
+						</div>
+					</ng-container>	
 					<div class="my-auto cursor-pointer" (click)="logout()">
 						<span class="font-semibold">{{userData.accountDetails.username | uppercase}}
 							<span class="cursor-pointer">

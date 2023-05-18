@@ -6,7 +6,7 @@ const path = require('path')
 const upload = async (req, res, next) => {
     const imagePath = req.file.path;
     const fileName = path.parse(req.file.filename).name;
-    const compressedImagePath = `../schoolbazar/src/assets/images/products/${fileName}.webp`; // Path to save the compressed image
+    const compressedImagePath = `../schoolbazar/src/assets/images/${fileName}.webp`; // Path to save the compressed image
 
     try {
         await sharp(imagePath)

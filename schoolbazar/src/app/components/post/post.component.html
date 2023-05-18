@@ -1,0 +1,16 @@
+<div class="post-detail" *ngIf="postData">
+    <h1>{{postData.post.name}}</h1>
+    <img src="../../../assets/images/{{postData.post.image}}" alt="" srcset="">
+    <p>{{postData.post.description}}</p>
+    <h1>Pro ročník: {{postData.post.grade}}. Ročník</h1>
+    <ng-container *ngIf="postData.post.place == 1; else stribrniky">
+        <h1>Na středisku: Resslova</h1>
+    </ng-container>
+    <ng-template #stribrniky>
+        <h1>Na středisku: Stříbrníky</h1>
+    </ng-template>
+    <h1>Cena: {{postData.post.price}},- kč</h1>
+    <ng-container *ngIf="userData">
+        <a *ngIf="userData.accountDetails.group == 'admin'" class="cursor-pointer" (click)="removePost(postData.post.id)">REMOVE</a> <!-- prosím pak předělej na něco pěknějšího nehehe -->
+    </ng-container>
+</div>
