@@ -8,12 +8,6 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  // getUserLogged(){
-  //   const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  //   const options = { withCredentials: true, headers };
-  //   return this.http.post('http://localhost:3000/getuser', {}, options);
-  // }
-
   getPosts(grade: any){
     return this.http.get(`http://localhost:4000/post/getposts`)
   }
@@ -37,5 +31,16 @@ export class HttpService {
   logout(){
     const options = { withCredentials: true };
     return this.http.get(`http://localhost:4000/logout`, options)
+  }
+
+  addPost(formData: any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const options = { withCredentials: true, headers };
+    return this.http.post(`http://localhost:4000/post/addpost`, {name: formData.name, price: formData.price, description: formData.description, state: formData.state, grade: formData.grade, place: formData.place, image: formData.image}, options)
+  }
+
+  upload(formsData: any){
+    const options = { withCredentials: true };
+    return this.http.post('http://localhost:4000/cdn/upload', formsData, options)
   }
 }

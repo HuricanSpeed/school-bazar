@@ -1,0 +1,39 @@
+<form (ngSubmit)="submitForm()">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" [(ngModel)]="formData.name" required><br><br>
+  
+    <label for="price">Price: </label>
+    <input type="number" id="price" name="price" step="1" [(ngModel)]="formData.price" required><br><br>
+  
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="formData.description" required></textarea><br><br>
+  
+    <label for="stav">Stav: </label>
+    <select id="stav" name="stav" [(ngModel)]="formData.state" required>
+      <option value="" disabled selected>Vyber stav položky</option>
+      <option value="1">Poškozené</option>
+      <option value="2">Zachovalé</option>
+      <option value="3">Nové</option>
+    </select><br><br>
+  
+    <label for="grade">Ročník: </label>
+    <select id="grade" name="grade" [(ngModel)]="formData.grade" required>
+      <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
+      <option value="1">1. Ročník</option>
+      <option value="2">2. Ročník</option>
+      <option value="3">3. Ročník</option>
+      <option value="4">4. Ročník</option>
+    </select><br><br>
+
+    <label for="place">Středisko: </label>
+    <select id="place" name="place" [(ngModel)]="formData.place" required>
+      <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
+      <option value="1">Resslova</option>
+      <option value="2">Stříbrníky</option>
+    </select><br><br>
+
+    <input type="file" name="image" (change)="onFileSelected($event)">
+
+    <button type="submit">Submit</button>
+  </form>
+  
