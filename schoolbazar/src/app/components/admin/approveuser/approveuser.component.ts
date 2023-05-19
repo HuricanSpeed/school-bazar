@@ -20,7 +20,6 @@ export class ApproveuserComponent implements OnInit{
       this.approvals = response
       console.log(this.approvals)
     }, (error) => {
-      console.log(error)
     })
   }
 
@@ -28,7 +27,6 @@ export class ApproveuserComponent implements OnInit{
     this.http.approveUser(id).subscribe((reponse) => {
       location.reload()
     }, (error) => {
-      console.log(error)
     })
   }
 
@@ -36,7 +34,6 @@ export class ApproveuserComponent implements OnInit{
     this.http.deleteUser(id).subscribe((reponse) => {
       location.reload()
     }, (error) => {
-      console.log(error)
     })
   }
 }

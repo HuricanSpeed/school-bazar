@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-redis": "^7.1.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
@@ -23,6 +24,7 @@
     "mysql2": "^3.3.1",
     "nodemon": "^2.0.22",
     "process": "^0.11.10",
+    "redis": "^4.6.6",
     "sequelize": "^6.31.1",
     "sharp": "^0.32.1",
     "webp-converter": "^2.3.3",

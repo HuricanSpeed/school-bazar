@@ -13,7 +13,7 @@
 	<ng-template #loggedIn>
 		<ng-container *ngIf="userData">
 			<ng-container *ngIf="userData.logged">
-				<div class="ml-2 sm:ml-auto flex flex-row text-[0.50rem] sm:text-base gap-5 sm:flex">
+				<div class="ml-2 sm:ml-auto flex flex-row text-[0.55rem] sm:text-base gap-5 sm:flex">
 					<ng-container *ngIf="userData.accountDetails.group == 'admin'">
 						<div class="my-auto cursor-pointer" [routerLink]="['/admin/user']">
 							<span class="font-semibold">{{ 'Schválení Uživatele' | uppercase }}</span>
@@ -22,16 +22,17 @@
 							<span class="font-semibold">{{ 'Schválení položek' | uppercase }}</span>
 						</div>
 						
-						<div class="my-auto cursor-pointer" [routerLink]="['/admin/users']">
+						<div class="my-auto">
 							<span class="font-semibold">{{ '|' | uppercase }}</span>
 						</div>
 					</ng-container>	
 					<div class="my-auto sm:flex cursor-pointer" (click)="logout()">
-						<span class="font-semibold">{{userData.accountDetails.username | uppercase}}
+						<span class="font-semibold hidden sm:flex sm:gap-1">{{userData.accountDetails.username | uppercase}}
 							<span class="cursor-pointer">
 								<fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
 							</span>
 						</span>
+						<span class="font-semibold flex sm:hidden">{{'ODHLÁSIT' | uppercase}}</span>
 					</div>
 				</div>
 			</ng-container>

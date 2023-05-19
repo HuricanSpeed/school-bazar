@@ -8,6 +8,15 @@ const morgan = require('morgan')
 const app = express();
 const session = require("express-session")
 
+// const RedisStore = require("connect-redis").default
+// const {createClient}= require("redis")
+
+// let redisClient = createClient({
+//   host: 'localhost', // Redis server host
+//   port: 6379, // Redis server port
+//   // Additional configuration options can be specified here
+// })
+// redisClient.connect().catch(console.error)
 
 const database = require("./models/index.module")
 const errorHandler = require("./middlewares/error.middleware")
@@ -24,7 +33,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors({ credentials: true, origin: "http://localhost:4200" }))
 
+// let redisStore = new RedisStore({
+//   client: redisClient,
+//   prefix: "schoolbazar:",
+// })
+
 app.use(session({ // session --> Production add SessionStore
+    // store: redisStore,
     name: 'schoolbazaar',
     secret: '5ch00lb4z44rby+d3jw&hur1c4n2023',
     resave: false,

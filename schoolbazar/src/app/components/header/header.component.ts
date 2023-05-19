@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   faArrowRightFromBracket = faArrowRightFromBracket
 
-  constructor(private http: HttpService){}
+  constructor(private http: HttpService, private router: Router){}
 
   userData: any
 
@@ -33,6 +34,6 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.http.logout().subscribe((response) =>{}, (error) => {})
     delete this.userData 
-    location.reload()
+    this.router.navigate(['/'])
   }
 }

@@ -1,21 +1,56 @@
-<div class="h-[39rem] flex justify-center items-center">
+<div class="h-[36rem] flex justify-center items-center">
     <div class="bg-gray-50 rounded-lg p-10 h-fit w-80">
         <form (ngSubmit)="submitForm()" class="flex flex-col justify-center items-center h-full w-full gap-3">
             <div class="form-group">
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username:</label>
-                <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.username" required>
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Uživatelské jméno:</label>
+                <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.username" #username="ngModel" required>
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-red-500">
+                    <div *ngIf="username.errors?.['required']">
+                        Uživatelské jméno je povinné.
+                    </div>
+                    <div *ngIf="username.errors?.['minlength']">
+                        Uživatelské jméno musí být nejméně 4 písmena dlouhé.
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email:</label>
-                <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.email" required>
+                <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" [(ngModel)]="formData.email" #email="ngModel" required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-red-500">
+                    <div *ngIf="email.errors?.['required']">
+                        Email je povinný.
+                    </div>
+                    <div *ngIf="email.errors?.['minlength']">
+                        Email musí být nejméně 9 písmen dlouhé.
+                    </div>
+                    <div *ngIf="email.errors?.['pattern']">
+                        Email nemá správné zadání.
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="telnumber" class="block mb-2 text-sm font-medium text-gray-900">Telephone Number:</label>
-                <input type="tel" id="telnumber" name="telnumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.telnumber" required>
+                <label for="telnumber" class="block mb-2 text-sm font-medium text-gray-900">Telefoní číslo:</label>
+                <input type="tel" id="telnumber" name="telnumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="9" [(ngModel)]="formData.telnumber" #telnumber="ngModel" required>
+                <div *ngIf="telnumber.invalid && (telnumber.dirty || telnumber.touched)" class="text-red-500">
+                    <div *ngIf="telnumber.errors?.['required']">
+                        Telefoní číslo jméno je povinné.
+                    </div>
+                    <div *ngIf="telnumber.errors?.['minlength']">
+                        Telefoní číslo musí být nejméně 9 písmen dlouhé.
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password:</label>
-                <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.password" required>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Heslo:</label>
+                <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.password" #password="ngModel" required>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-500">
+                    <div *ngIf="password.errors?.['required']">
+                        Heslo je povinné.
+                    </div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        Heslo musí být nejméně 8 písmen dlouhé.
+                    </div>
+                </div>
             </div>
         
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sumbit</button>

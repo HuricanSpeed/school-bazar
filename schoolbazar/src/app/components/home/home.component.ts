@@ -58,8 +58,6 @@ export class HomeComponent implements OnInit {
 		}
 	}
 
-	errorMessage: string = ""
-
 	loadPosts(){
 		this.http.getPosts(0).subscribe((data: any) => {
 			this.posts = data;
@@ -70,7 +68,6 @@ export class HomeComponent implements OnInit {
 			}
 			this.setPosts()
 		}, (error) => {
-			this.errorMessage = error.error.message
 			this.noposts = true
 		})
 	}
@@ -88,13 +85,17 @@ export class HomeComponent implements OnInit {
 				this.mostexpensive = false;
 				break;
 			case 1:
-				this.filteredData.sort((a: any, b: any) => a.price - b.price)
+				if(this.filteredData){
+					this.filteredData.sort((a: any, b: any) => a.price - b.price)
+				}
 				this.relative = false;
 				this.cheapest = true;
 				this.mostexpensive = false;
 				break;	
 			case 2:
-				this.filteredData.sort((a: any, b: any) => b.price - a.price)
+				if(this.filteredData){
+					this.filteredData.sort((a: any, b: any) => b.price - a.price)
+				}
 				this.relative = false;
 				this.cheapest = false;
 				this.mostexpensive = true;
