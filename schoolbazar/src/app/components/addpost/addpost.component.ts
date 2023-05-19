@@ -22,6 +22,7 @@ export class AddpostComponent implements OnInit {
     grade: 0,
     username: '',
     place: 0,
+    subject: '',
     image: ''
   }
 
@@ -42,7 +43,9 @@ export class AddpostComponent implements OnInit {
       this.userData = response
       this.userData = this.userData.data
       console.log(this.userData)
-    }, (error) => {})
+    }, (error) => {
+      this.router.navigate(['/'])
+    })
   }
 
 

@@ -3,13 +3,14 @@ const Post = require("../models/post.model")
 const addPost = (req, res, next) => {
     try {
         Post.create({
-            username: 'req.session.accountDetails.username',
+            username: req.session.accountDetails.username,
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
             state: req.body.state,
             grade: req.body.grade,
             place: req.body.place,
+            subject: req.body.subject,
             image: req.body.image
         })
         res.status(200).json({success: true, message: "Post added successfully"});

@@ -19,6 +19,7 @@ const postValidation = [
     body('state').exists().trim(),
     body('grade').exists().trim(),
     body('place').exists().trim(),
+    body('subject').exists().trim(),
     body('image').exists().trim(),
 ]
 

@@ -10,6 +10,8 @@ export class ApprovepostComponent implements OnInit{
 
   approvals: any
 
+  subjects = ['Matematika', 'Čeština', 'Němčina', 'Fyzika', 'Angličtina', 'Elektrotechnika', 'Databáze', 'Technické vybavení', 'Ostatní'];
+
   constructor(private http: HttpService){}
 
   ngOnInit(): void {

@@ -36,7 +36,7 @@ export class HttpService {
   addPost(formData: any){
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const options = { withCredentials: true, headers };
-    return this.http.post(`http://localhost:4000/post/addpost`, {name: formData.name, price: formData.price, description: formData.description, state: formData.state, grade: formData.grade, place: formData.place, image: formData.image}, options)
+    return this.http.post(`http://localhost:4000/post/addpost`, {name: formData.name, price: formData.price, description: formData.description, state: formData.state, grade: formData.grade, place: formData.place , subject: formData.subject, image: formData.image}, options)
   }
 
   upload(formsData: any){

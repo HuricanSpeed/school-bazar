@@ -25,6 +25,20 @@
       <option value="4">4. Ročník</option>
     </select><br><br>
 
+    <label for="subject">Předmět: </label>
+    <select id="subject" name="subject" [(ngModel)]="formData.subject" required>
+      <option value="" disabled selected>Vyber předmět pro který je položka určena</option>
+      <option value="1">Matematika</option>
+      <option value="2">Čeština</option>
+      <option value="3">Němčina</option>
+      <option value="4">Fyzika</option>
+      <option value="5">Angličtina</option>
+      <option value="6">Elektrotechnika</option>
+      <option value="7">Databáze</option>
+      <option value="8">Technické vybavení</option>
+      <option value="9">Ostatní</option>
+    </select><br><br>
+
     <label for="place">Středisko: </label>
     <select id="place" name="place" [(ngModel)]="formData.place" required>
       <option value="" disabled selected>Vyber ročník pro který je položka určena</option>

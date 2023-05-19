@@ -9,6 +9,7 @@
     <ng-template #stribrniky>
         <h1>Na středisku: Stříbrníky</h1>
     </ng-template>
+    <h1>{{subjects[postData.post.subject-1]}}</h1>
     <h1>Cena: {{postData.post.price}},- kč</h1>
     <ng-container *ngIf="userData">
         <a *ngIf="userData.accountDetails.group == 'admin'" class="cursor-pointer" (click)="removePost(postData.post.id)">REMOVE</a> <!-- prosím pak předělej na něco pěknějšího nehehe -->

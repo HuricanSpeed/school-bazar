@@ -15,6 +15,8 @@ export class PostComponent implements OnInit{
   postData: any
   userData: any
 
+  subjects = ['Matematika', 'Čeština', 'Němčina', 'Fyzika', 'Angličtina', 'Elektrotechnika', 'Databáze', 'Technické vybavení', 'Ostatní'];
+
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.loadPost()

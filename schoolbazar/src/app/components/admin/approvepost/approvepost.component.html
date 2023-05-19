@@ -9,6 +9,7 @@
         <th>State</th>
         <th>Grade</th>
         <th>Place</th>
+        <th>Subject</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -32,6 +33,7 @@
         <ng-template #stribrniky>
             <td>Stříbrníky</td>
         </ng-template>
+        <td>{{subjects[item.subject-1]}}</td>
         <td>
           <a routerLink="/post/{{item.id}}" target="_blank">Preview</a> | 
           <a (click)="approvePost(item.id)">Approve</a> | 

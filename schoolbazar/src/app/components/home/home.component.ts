@@ -15,10 +15,11 @@ export class HomeComponent implements OnInit {
 	posts: any;
 	noposts: boolean = false;
 	filteredData: any;
-	showStav: boolean = true;
-	showGrade: boolean = true;
-	showPlace: boolean = true;
-	checkboxFilters: any = { grade: [], state: [], place: [] };
+	showStav: boolean = false;
+	showGrade: boolean = false;
+	showPlace: boolean = false;
+	showSubject: boolean = false
+	checkboxFilters: any = { grade: [], state: [], place: [], subject: [] };
 	userData: any;
 
 
@@ -46,6 +47,12 @@ export class HomeComponent implements OnInit {
 			case 1:
 				this.showGrade = !this.showGrade
 				break;
+			case 2:
+				this.showPlace = !this.showPlace
+				break;
+			case 3:
+				this.showSubject = !this.showSubject
+				break
 			default:
 				break;
 		}
@@ -70,6 +77,7 @@ export class HomeComponent implements OnInit {
 
 	setPosts(){
 		this.filteredData = this.posts.posts;
+		console.log(this.filteredData)
 	}
 
 	changeFilterGlobal(filter: number) {
@@ -97,8 +105,6 @@ export class HomeComponent implements OnInit {
 	}
   
 	checkboxChanged(filterValue: number, filterType: string): void {
-		console.log(filterValue)
-		console.log(filterType)
 		const filterIndex = this.checkboxFilters[filterType].indexOf(filterValue);
 		if (filterIndex > -1) {
 		  this.checkboxFilters[filterType].splice(filterIndex, 1);
@@ -110,7 +116,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	filterData(): void {
-		console.log(this.checkboxFilters)
 		this.filteredData = this.posts.posts.filter((item: any) => {
 			return (
 			this.checkboxFilters.grade.length === 0 ||
@@ -118,6 +123,9 @@ export class HomeComponent implements OnInit {
 			) && (
 			this.checkboxFilters.state.length === 0 ||
 			this.checkboxFilters.state.includes(item.state)
+			) && (
+			this.checkboxFilters.subject.length === 0 ||
+			this.checkboxFilters.subject.includes(item.subject)
 			) && (
 			this.checkboxFilters.place.length === 0 ||
 			this.checkboxFilters.place.includes(item.place)

@@ -33,7 +33,11 @@ const Post = sequelize.define("posts", {
         allowNull: false
     },
     place: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TINYINT,
+        allowNull: false
+    },
+    subject: {
+        type: DataTypes.TINYINT,
         allowNull: false
     },
     image: {
