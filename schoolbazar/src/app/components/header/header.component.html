@@ -2,31 +2,31 @@
 	<div class="my-auto cursor-pointer">
 		<img src="./assets/images/logo.png" [routerLink]="['/']" />
 	</div>
-	<div class="ml-auto hidden gap-8 sm:flex" *ngIf="!userData; else loggedIn">
+	<div class="ml-2 sm:ml-auto flex flex-row gap-6 sm:flex" *ngIf="!userData; else loggedIn">
 		<div class="my-auto cursor-pointer" [routerLink]="['/login']">
-			<span class="font-semibold">{{ 'Přihlásit se' | uppercase }}</span>
+			<span class="font-semibold">PŘIHLÁSIT <b class="hidden sm:inline-block font-semibold">SE</b></span>
 		</div>
 		<div class="my-auto cursor-pointer" [routerLink]="['/register']">
-			<span class="font-semibold">{{ 'Registrovat se' | uppercase }}</span>
+			<span class="font-semibold">REGISTROVAT <b class="hidden sm:inline-block font-semibold">SE</b></span>
 		</div>
 	</div>
 	<ng-template #loggedIn>
 		<ng-container *ngIf="userData">
 			<ng-container *ngIf="userData.logged">
-				<div class="ml-auto hidden gap-8 sm:flex">
+				<div class="ml-2 sm:ml-auto flex flex-row text-[0.50rem] sm:text-base gap-5 sm:flex">
 					<ng-container *ngIf="userData.accountDetails.group == 'admin'">
 						<div class="my-auto cursor-pointer" [routerLink]="['/admin/user']">
-							<span class="font-semibold">{{ 'APPROVE USERS' | uppercase }}</span>
+							<span class="font-semibold">{{ 'Schválení Uživatele' | uppercase }}</span>
 						</div>
 						<div class="my-auto cursor-pointer" [routerLink]="['/admin/post']">
-							<span class="font-semibold">{{ 'APPROVE POSTS' | uppercase }}</span>
+							<span class="font-semibold">{{ 'Schválení položek' | uppercase }}</span>
 						</div>
 						
 						<div class="my-auto cursor-pointer" [routerLink]="['/admin/users']">
 							<span class="font-semibold">{{ '|' | uppercase }}</span>
 						</div>
 					</ng-container>	
-					<div class="my-auto cursor-pointer" (click)="logout()">
+					<div class="my-auto sm:flex cursor-pointer" (click)="logout()">
 						<span class="font-semibold">{{userData.accountDetails.username | uppercase}}
 							<span class="cursor-pointer">
 								<fa-icon [icon]="faArrowRightFromBracket"></fa-icon>

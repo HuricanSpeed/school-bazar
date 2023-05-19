@@ -11,6 +11,8 @@ const addPost = (req, res, next) => {
             grade: req.body.grade,
             place: req.body.place,
             subject: req.body.subject,
+            telnumber: req.session.accountDetails.telnumber,
+            email: req.session.accountDetails.email,
             image: req.body.image
         })
         res.status(200).json({success: true, message: "Post added successfully"});

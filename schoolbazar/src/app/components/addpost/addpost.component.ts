@@ -42,7 +42,6 @@ export class AddpostComponent implements OnInit {
     this.http.getUser().subscribe((response) => {
       this.userData = response
       this.userData = this.userData.data
-      console.log(this.userData)
     }, (error) => {
       this.router.navigate(['/'])
     })
@@ -60,6 +59,7 @@ export class AddpostComponent implements OnInit {
         this.formData.image = this.uploadResponse.imageName
         this.http.addPost(this.formData).subscribe((response) => {
           this.errorMessage = "Post have been created"
+          this.router.navigate(['/'])
         }, (error) => {
           console.log(error)
           this.errorMessage = error.error.message

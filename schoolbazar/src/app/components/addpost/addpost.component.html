@@ -1,53 +1,67 @@
-<form (ngSubmit)="submitForm()">
-    <label for="name">Name: </label>
-    <input type="text" id="name" name="name" [(ngModel)]="formData.name" required><br><br>
-  
-    <label for="price">Price: </label>
-    <input type="number" id="price" name="price" step="1" [(ngModel)]="formData.price" required><br><br>
-  
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="formData.description" required></textarea><br><br>
-  
-    <label for="stav">Stav: </label>
-    <select id="stav" name="stav" [(ngModel)]="formData.state" required>
-      <option value="" disabled selected>Vyber stav položky</option>
-      <option value="1">Poškozené</option>
-      <option value="2">Zachovalé</option>
-      <option value="3">Nové</option>
-    </select><br><br>
-  
-    <label for="grade">Ročník: </label>
-    <select id="grade" name="grade" [(ngModel)]="formData.grade" required>
-      <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
-      <option value="1">1. Ročník</option>
-      <option value="2">2. Ročník</option>
-      <option value="3">3. Ročník</option>
-      <option value="4">4. Ročník</option>
-    </select><br><br>
+<div class="min-h-[58rem] flex justify-center items-center">
+  <div class="bg-gray-50 rounded-lg p-10 h-fit w-fit">
+    <form (ngSubmit)="submitForm()" class="flex flex-col justify-center items-center h-full w-full gap-3">
+        <div class="form-group">
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Název položky: </label>
+          <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.name" required>
+        </div>
+        <div class="form-group">
+          <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Cena položky: </label>
+          <input type="number" id="price" name="price" step="1" min="1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.price" required>
+        </div>
+        <div class="form-group">
+          <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Popisek položky:</label>
+          <textarea id="description" name="description" rows="4" cols="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.description" required></textarea>
+        </div>
+      
+        <div class="form-group">
+          <label for="stav" class="block mb-2 text-sm font-medium text-gray-900">Stav: </label>
+          <select id="stav" name="stav" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.state" required>
+            <option value="" disabled selected>Vyber stav položky</option>
+            <option value="1">Poškozené</option>
+            <option value="2">Zachovalé</option>
+            <option value="3">Nové</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="grade" class="block mb-2 text-sm font-medium text-gray-900">Ročník: </label>
+          <select id="grade" name="grade" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.grade" required>
+            <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
+            <option value="1">1. Ročník</option>
+            <option value="2">2. Ročník</option>
+            <option value="3">3. Ročník</option>
+            <option value="4">4. Ročník</option>
+          </select>
+        </div>
 
-    <label for="subject">Předmět: </label>
-    <select id="subject" name="subject" [(ngModel)]="formData.subject" required>
-      <option value="" disabled selected>Vyber předmět pro který je položka určena</option>
-      <option value="1">Matematika</option>
-      <option value="2">Čeština</option>
-      <option value="3">Němčina</option>
-      <option value="4">Fyzika</option>
-      <option value="5">Angličtina</option>
-      <option value="6">Elektrotechnika</option>
-      <option value="7">Databáze</option>
-      <option value="8">Technické vybavení</option>
-      <option value="9">Ostatní</option>
-    </select><br><br>
+        <div class="form-group">
+          <label for="subject" class="block mb-2 text-sm font-medium text-gray-900">Předmět: </label>
+          <select id="subject" name="subject" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.subject" required>
+            <option value="" disabled selected>Vyber předmět pro který je položka určena</option>
+            <option value="1">Matematika</option>
+            <option value="2">Čeština</option>
+            <option value="3">Němčina</option>
+            <option value="4">Fyzika</option>
+            <option value="5">Angličtina</option>
+            <option value="6">Elektrotechnika</option>
+            <option value="7">Databáze</option>
+            <option value="8">Technické vybavení</option>
+            <option value="9">Ostatní</option>
+          </select>
+        </div>
 
-    <label for="place">Středisko: </label>
-    <select id="place" name="place" [(ngModel)]="formData.place" required>
-      <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
-      <option value="1">Resslova</option>
-      <option value="2">Stříbrníky</option>
-    </select><br><br>
+        <div class="form-group">
+          <label for="place" class="block mb-2 text-sm font-medium text-gray-900">Středisko: </label>
+          <select id="place" name="place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.place"  required>
+            <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
+            <option value="1">Resslova</option>
+            <option value="2">Stříbrníky</option>
+          </select>
+        </div>
 
-    <input type="file" name="image" (change)="onFileSelected($event)">
+        <input type="file" name="image" accept="image/png, image/jpg, image/gif, image/jpeg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" (change)="onFileSelected($event)">
 
-    <button type="submit">Submit</button>
-  </form>
-  
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+      </form>
+  </div>
+</div>

@@ -40,6 +40,14 @@ const Post = sequelize.define("posts", {
         type: DataTypes.TINYINT,
         allowNull: false
     },
+    telnumber: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     image: {
         type: DataTypes.STRING,
         allowNull: false

@@ -116,21 +116,23 @@ export class HomeComponent implements OnInit {
 	}
 
 	filterData(): void {
-		this.filteredData = this.posts.posts.filter((item: any) => {
-			return (
-			this.checkboxFilters.grade.length === 0 ||
-			this.checkboxFilters.grade.includes(item.grade)
-			) && (
-			this.checkboxFilters.state.length === 0 ||
-			this.checkboxFilters.state.includes(item.state)
-			) && (
-			this.checkboxFilters.subject.length === 0 ||
-			this.checkboxFilters.subject.includes(item.subject)
-			) && (
-			this.checkboxFilters.place.length === 0 ||
-			this.checkboxFilters.place.includes(item.place)
-			);
-		});
+		if(this.posts){
+			this.filteredData = this.posts.posts.filter((item: any) => {
+				return (
+				this.checkboxFilters.grade.length === 0 ||
+				this.checkboxFilters.grade.includes(item.grade)
+				) && (
+				this.checkboxFilters.state.length === 0 ||
+				this.checkboxFilters.state.includes(item.state)
+				) && (
+				this.checkboxFilters.subject.length === 0 ||
+				this.checkboxFilters.subject.includes(item.subject)
+				) && (
+				this.checkboxFilters.place.length === 0 ||
+				this.checkboxFilters.place.includes(item.place)
+				);
+			});
+		}
 	}
 
 }

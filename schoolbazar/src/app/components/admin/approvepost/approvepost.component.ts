@@ -21,19 +21,19 @@ export class ApprovepostComponent implements OnInit{
   getApprovalsPost(){
     this.http.getApprovalsPost().subscribe((response) => {
       this.approvals = response
-      console.log(this.approvals)
     }, (error) => {
-      console.log(error)
     })
   }
 
   approvePost(id: number){
     this.http.approvePost(id).subscribe((response) => {
+      location.reload()
     }, (error) => {})
   }
 
   removePost(id: number){
     this.http.removePost(id).subscribe((response) => {
+      location.reload()
     }, (error) => {})
   }
 }

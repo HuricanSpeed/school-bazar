@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.http.logout().subscribe((response) =>{})
+    this.http.logout().subscribe((response) =>{}, (error) => {})
     delete this.userData 
     location.reload()
   }

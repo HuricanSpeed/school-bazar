@@ -1,45 +1,46 @@
-<table>
-    <thead>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-black table-auto">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
       <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>State</th>
-        <th>Grade</th>
-        <th>Place</th>
-        <th>Subject</th>
-        <th>Actions</th>
+        <th scope="col" class="px-5 py-2">ID</th>
+        <th scope="col" class="px-5 py-2">Uživatelské jméno</th>
+        <th scope="col" class="px-5 py-2">JMÉNO POLOŽKY</th>
+        <th scope="col" class="px-5 py-2">CENA</th>
+        <th scope="col" class="px-5 py-2">STAV</th>
+        <th scope="col" class="px-5 py-2">ROČNÍK</th>
+        <th scope="col" class="px-5 py-2">STŘEDISKO</th>
+        <th scope="col" class="px-5 py-2">PŘEDMĚT</th>
+        <th scope="col" class="px-5 py-2">VYTVOŘEN</th>
+        <th scope="col" class="px-5 py-2">AKCE</th>
       </tr>
     </thead>
     <tbody *ngIf="approvals">
-      <tr *ngFor="let item of approvals.approvals">
-        <td>{{ item.id }}</td>
-        <td>{{ item.username }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.price }}</td>
+      <tr *ngFor="let item of approvals.approvals" class="border-b even:bg-gray-300">
+        <td class="px-4 py-2">{{ item.id }}</td>
+        <td class="px-4 py-2">{{ item.username }}</td>
+        <td class="px-4 py-2">{{ item.name }}</td>
+        <td class="px-4 py-2">{{ item.price }} kč</td>
         <ng-container [ngSwitch]="item.state">
-            <td *ngSwitchCase="1">Poškozené</td>
-            <td *ngSwitchCase="2">Zachovalé</td>
-            <td *ngSwitchCase="3">Nové</td>
-            <td *ngSwitchDefault>Default</td>
+            <td class="px-4 py-2" *ngSwitchCase="1">Poškozené</td>
+            <td class="px-4 py-2" *ngSwitchCase="2">Zachovalé</td>
+            <td class="px-4 py-2" *ngSwitchCase="3">Nové</td>
+            <td class="px-4 py-2" *ngSwitchDefault>Default</td>
         </ng-container>
-        <td>{{item.grade}}. Ročník</td>
+        <td class="px-4 py-2">{{item.grade}}. Ročník</td>
         <ng-container *ngIf="item.place == 1;else stribrniky">
-            <td>Resslova</td>
+            <td class="px-4 py-2">Resslova</td>
         </ng-container>
         <ng-template #stribrniky>
-            <td>Stříbrníky</td>
+            <td class="px-4 py-2">Stříbrníky</td>
         </ng-template>
-        <td>{{subjects[item.subject-1]}}</td>
-        <td>
-          <a routerLink="/post/{{item.id}}" target="_blank">Preview</a> | 
-          <a (click)="approvePost(item.id)">Approve</a> | 
-          <a (click)="removePost(item.id)">Delete</a>
+        <td class="px-4 py-2">{{subjects[item.subject-1]}}</td>
+        <td class="px-4 py-2">{{ item.createdAt | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td class="px-4 py-2 flex gap-0.5">
+          <a routerLink="/post/{{item.id}}" target="_blank" class="block p-1 rounded font-medium bg-blue-600 text-white cursor-pointer hover:underline">Náhled</a>
+          <a (click)="approvePost(item.id)" class="block p-1 rounded font-medium bg-green-600 text-white cursor-pointer hover:underline">Schválit</a>
+          <a (click)="removePost(item.id)" class="block p-1 rounded font-medium bg-red-600 text-white cursor-pointer hover:underline">Smazat</a>
         </td>
       </tr>
     </tbody>
   </table>
-  
+</div>
