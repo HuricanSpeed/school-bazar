@@ -13,7 +13,7 @@ const registerValidation = [
 ]
 
 const postValidation = [
-    body('name').exists().trim().isLength({ min: 2 }).withMessage('must be at least 2 chars long'),
+    body('name').exists().trim().isLength({ min: 2, max: 128 }).withMessage('must be at least 2 chars long'),
     body('price').exists().trim(),
     body('description').exists().trim(),
     body('state').exists().trim(),

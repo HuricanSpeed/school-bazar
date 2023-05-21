@@ -85,17 +85,17 @@
 	</div>
 	<div class="w-full gap-0.5 block">
 		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5 h-fit">
-			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100" (click)="changeFilterGlobal(0)" [class.active]="relative">
+			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100 text-center" (click)="changeFilterGlobal(0)" [class.active]="relative">
 				<span class="font-semibold text-lg">{{ 'Relativní' | uppercase }}</span>
 			</div>
-			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100" (click)="changeFilterGlobal(1)" [class.active]="cheapest">
+			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100 text-center" (click)="changeFilterGlobal(1)" [class.active]="cheapest">
 				<span class="font-semibold text-lg">{{ 'Nejlevnější' | uppercase }}</span>
 			</div>
-			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100" (click)="changeFilterGlobal(2)" [class.active]="mostexpensive">
+			<div class="py-2 px-16 justify-center bg-white cursor-pointer hover:bg-gray-100 text-center" (click)="changeFilterGlobal(2)" [class.active]="mostexpensive">
 				<span class="font-semibold text-lg">{{ 'Nejdražší' | uppercase }}</span>
 			</div>
 			<ng-container *ngIf="userData">
-				<div class="py-2 w-full flex cursor-pointer bg-primary" *ngIf="userData.logged" [routerLink]="['/addpost']">
+				<div class="py-2 w-full flex cursor-pointer bg-primary text-center" *ngIf="userData.logged" [routerLink]="['/addpost']">
 					<span class="font-semibold text-lg m-auto text-white">PŘIDAT POLOŽKU</span>
 				</div>
 			</ng-container>
