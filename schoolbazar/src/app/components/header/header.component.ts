@@ -34,6 +34,6 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.http.logout().subscribe((response) =>{}, (error) => {})
     delete this.userData 
-    this.router.navigate(['/'])
+    location.reload();
   }
 }

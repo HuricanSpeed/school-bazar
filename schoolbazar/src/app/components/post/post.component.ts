@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { HttpService } from 'src/app/http.service';
 })
 export class PostComponent implements OnInit{
   
-  constructor(private http: HttpService, private route: ActivatedRoute){}
+  constructor(private http: HttpService, private route: ActivatedRoute, private router: Router){}
 
   id: number = 0
   postData: any
@@ -41,6 +41,7 @@ export class PostComponent implements OnInit{
 
   removePost(id: number){
     this.http.removePost(id).subscribe((response) => {
+      this.router.navigate(['/'])
     }, (error) => {})
   }
 }
