@@ -1,26 +1,26 @@
 <div class="h-fit w-full flex justify-center items-center" *ngIf="postData">
     <div class="card m-12 grid grid-cols-1 sm:grid-cols-2 w-[43rem] gap-2 bg-white h-fit rounded">
-        <div class="image w-[9rem] ml-auto mr-auto sm:mr-0 sm:ml-0">
-            <img src="../../../assets/images/{{postData.post.image}}" alt="" srcset="">
+        <div class="image w-[9rem] mt-2 sm:mt-0 sm:w-full ml-auto mr-auto sm:mr-0 sm:ml-0">
+            <img src="../../../assets/images/{{ postData.post.image }}" alt="" srcset="">
         </div>
         <div class="post-detail flex flex-col justify-center items-center sm:items-start sm:justify-normal gap-2 p-4">
-            <h1 class="text-lg font-medium">{{postData.post.name}}</h1>
-            <p><b>Pro :</b> {{postData.post.grade}}. Ročník</p>
+            <h1 class="text-lg font-medium break-all">{{ postData.post.name }}</h1>
+            <p><b>Pro :</b> {{ postData.post.grade }}. Ročník</p>
             <ng-container *ngIf="postData.post.place == 1; else stribrniky">
                 <p><b>Na středisku:</b> Resslova</p>
             </ng-container>
             <ng-template #stribrniky>
                 <p><b>Na středisku:</b> Stříbrníky</p>
             </ng-template>
-            <p><b>Předmět:</b> {{subjects[postData.post.subject-1]}}</p>
+            <p><b>Předmět:</b> {{ subjects[postData.post.subject-1] }}</p>
             <div class="desc"><b>Popisek:</b>
-                <p class="overflow-y-auto block w-full h-fit max-h-[9rem]">{{postData.post.description}}</p>
+                <p class="overflow-y-auto block w-full h-fit max-h-[6.5rem]">{{ postData.post.description }}</p>
             </div>
             <h1>
-                <p><b>Telefoní číslo:</b> {{postData.post.telnumber}}</p>
-                <p><b>E-mail:</b> {{postData.post.email}}</p>
+                <p><b>Telefoní číslo:</b> {{ postData.post.telnumber }}</p>
+                <p><b>E-mail:</b> {{ postData.post.email }}</p>
             </h1>
-            <h2 class="text-lg font-medium">Cena: <b class="text-orange-600">{{postData.post.price}},- kč</b></h2>
+            <h2 class="text-lg font-medium">Cena: <b class="text-orange-600">{{ postData.post.price }},- kč</b></h2>
             <ng-container *ngIf="userData">
                 <a *ngIf="userData.accountDetails.group == 'admin'" class="block p-1 rounded font-medium bg-red-600 text-white cursor-pointer hover:underline w-fit" (click)="removePost(postData.post.id)">SMAZAT PŘÍSPĚVEK</a> <!-- prosím pak předělej na něco pěknějšího nehehe -->
             </ng-container>

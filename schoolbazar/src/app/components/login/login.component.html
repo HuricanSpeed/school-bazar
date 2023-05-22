@@ -3,8 +3,8 @@
         <form (ngSubmit)="submitForm()" class="flex flex-col justify-center items-center h-full w-full gap-3">
             <div class="form-group">
                 <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Uživatelské jméno:</label>
-                <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="4" [(ngModel)]="formData.username" #username="ngModel" required>
-                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-red-500">
+                <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5" minlength="4" [(ngModel)]="formData.username" #username="ngModel" required>
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-red-500 text-sm">
                     <div *ngIf="username.errors?.['required']">
                         Uživatelské jméno je povinné.
                     </div>
@@ -15,8 +15,8 @@
             </div>
             <div class="form-group">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Heslo:</label>
-                <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" minlength="8" [(ngModel)]="formData.password" #password="ngModel" required>
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-500">
+                <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5" minlength="8" [(ngModel)]="formData.password" #password="ngModel" required>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-500 text-sm">
                     <div *ngIf="password.errors?.['required']">
                         Heslo je povinné.
                     </div>

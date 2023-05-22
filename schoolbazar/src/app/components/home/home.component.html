@@ -106,7 +106,7 @@
 					<div class="bg-white p-8 grid gap-4 cursor-pointer hover:brightness-75" [routerLink]="['/post', item.id]">
 						<img src="/assets/images/{{item.image}}" alt="" />
 						<div class="grid gap-2">
-							<p class="font-semibold">{{item.name}}</p>
+							<p class="font-semibold break-all">{{item.name}}</p>
 							<div class="flex">
 								<span class="font-semibold text-lg">{{item.price}},- kč</span>
 								<span class="text-sm ml-auto text-gray-700 mt-auto">{{ item.createdAt | date:'dd.MM.yyyy' }}</span>

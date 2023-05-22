@@ -1,31 +1,37 @@
 <div class="min-h-[58rem] flex justify-center items-center">
   <div class="bg-gray-50 rounded-lg p-10 h-fit w-fit">
-    <form (ngSubmit)="submitForm()" class="flex flex-col justify-center items-center h-full w-full gap-3">
+    <form (ngSubmit)="submitForm()" class="flex flex-col justify-center items-center h-full w-[22.5rem] gap-3" #addPostForm="ngForm">
         <div class="form-group">
           <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Název položky: </label>
-          <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.name" #name="ngModel" minlength="2" required>
-          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-red-500">
+          <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" [(ngModel)]="formData.name" #name="ngModel" minlength="2" maxlength="40" required>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-red-500 text-sm">
             <div *ngIf="name.errors?.['required']">
               Název je povinný.
             </div>
             <div *ngIf="name.errors?.['minlength']">
-              Název musí být nejméně 2 písmena dlouhé.
+              Název musí být nejméně 2 písmena dlouhý.
+            </div>
+            <div *ngIf="name.errors?.['malength']">
+              Název musí být maximálně 40 písmena dlouhý.
             </div>
           </div>
         </div>
         <div class="form-group">
           <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Cena položky: </label>
-          <input type="number" id="price" name="price" step="1" min="1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.price" #price="ngModel" required>
-          <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-red-500">
+          <input type="number" id="price" name="price" step="1" min="1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" pattern="^[0-9]*\.?[0-9]+$" [(ngModel)]="formData.price" #price="ngModel" required>
+          <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-red-500 text-sm">
             <div *ngIf="price.errors?.['required']">
               Cena je povinná.
+            </div>
+            <div *ngIf="price.errors?.['pattern']">
+              Cena nesmí obsahovat +/- !
             </div>
           </div>
         </div>
         <div class="form-group">
           <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Popisek položky:</label>
-          <textarea id="description" name="description" rows="4" cols="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.description" #description="ngModel" required></textarea>
-          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-red-500">
+          <textarea id="description" name="description" rows="4" cols="50" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5 resize-none" [(ngModel)]="formData.description" #description="ngModel" required></textarea>
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-red-500 text-sm">
             <div *ngIf="description.errors?.['required']">
               Popisek je povinný.
             </div>
@@ -34,13 +40,13 @@
       
         <div class="form-group">
           <label for="stav" class="block mb-2 text-sm font-medium text-gray-900">Stav: </label>
-          <select id="stav" name="stav" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.state" #state="ngModel" required>
+          <select id="stav" name="stav" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" [(ngModel)]="formData.state" #state="ngModel" required>
             <option value="" disabled selected>Vyber stav položky</option>
             <option value="1">Poškozené</option>
             <option value="2">Zachovalé</option>
             <option value="3">Nové</option>
           </select>
-          <div *ngIf="state.invalid && (state.dirty || state.touched)" class="text-red-500">
+          <div *ngIf="state.invalid && (state.dirty || state.touched)" class="text-red-500 text-sm">
             <div *ngIf="state.errors?.['required']">
               Stav je povinný.
             </div>
@@ -48,14 +54,14 @@
         </div>
         <div class="form-group">
           <label for="grade" class="block mb-2 text-sm font-medium text-gray-900">Ročník: </label>
-          <select id="grade" name="grade" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.grade" #grade="ngModel" required>
+          <select id="grade" name="grade" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" [(ngModel)]="formData.grade" #grade="ngModel" required>
             <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
             <option value="1">1. Ročník</option>
             <option value="2">2. Ročník</option>
             <option value="3">3. Ročník</option>
             <option value="4">4. Ročník</option>
           </select>
-          <div *ngIf="grade.invalid && (grade.dirty || grade.touched)" class="text-red-500">
+          <div *ngIf="grade.invalid && (grade.dirty || grade.touched)" class="text-red-500 text-sm">
             <div *ngIf="grade.errors?.['required']">
               Stav je povinný.
             </div>
@@ -64,7 +70,7 @@
 
         <div class="form-group">
           <label for="subject" class="block mb-2 text-sm font-medium text-gray-900">Předmět: </label>
-          <select id="subject" name="subject" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.subject" #subject="ngModel" required>
+          <select id="subject" name="subject" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" [(ngModel)]="formData.subject" #subject="ngModel" required>
             <option value="" disabled selected>Vyber předmět pro který je položka určena</option>
             <option value="1">Matematika</option>
             <option value="2">Čeština</option>
@@ -76,7 +82,7 @@
             <option value="8">Technické vybavení</option>
             <option value="9">Ostatní</option>
           </select>
-          <div *ngIf="grade.invalid && (grade.dirty || grade.touched)" class="text-red-500">
+          <div *ngIf="grade.invalid && (grade.dirty || grade.touched)" class="text-red-500 text-sm">
             <div *ngIf="grade.errors?.['required']">
               Stav je povinný.
             </div>
@@ -85,20 +91,21 @@
 
         <div class="form-group">
           <label for="place" class="block mb-2 text-sm font-medium text-gray-900">Středisko: </label>
-          <select id="place" name="place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="formData.place" #place="ngModel" required>
-            <option value="" disabled selected>Vyber ročník pro který je položka určena</option>
+          <select id="place" name="place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" [(ngModel)]="formData.place" #place="ngModel" required>
+            <option value="" disabled selected>Vyber středisko na kterém se položka prodává</option>
             <option value="1">Resslova</option>
             <option value="2">Stříbrníky</option>
           </select>
-          <div *ngIf="place.invalid && (place.dirty || place.touched)" class="text-red-500">
+          <div *ngIf="place.invalid && (place.dirty || place.touched)" class="text-red-500 text-sm">
             <div *ngIf="place.errors?.['required']">
               Stav je povinný.
             </div>
           </div>
         </div>
 
-        <input type="file" name="image" accept="image/png, image/jpg, image/gif, image/jpeg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required (change)="onFileSelected($event)">
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        <input type="file" name="image" accept="image/png, image/jpg, image/gif, image/jpeg" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-[22.5rem] p-2.5" required (change)="onFileSelected($event)">
+        
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-[22.5rem] sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-25 disabled:cursor-not-allowed">Submit</button>
       </form>
   </div>
 </div>
